@@ -54,7 +54,6 @@ function game() {
         let gameResult = playRound(playerSelection, computerSelection);
         console.log(gameResult);
 
-        console.log(gameResult.substring(4,5));
         if (gameResult.substring(4,5) === 'W'){
             playerScore++;
         } else if (gameResult.substring(4,5) === 'L'){
