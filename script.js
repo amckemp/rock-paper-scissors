@@ -1,5 +1,7 @@
 "use strict";
 
+alert("First to five wins!");
+
 let playerSelection;
 let computerSelection;
 
@@ -118,8 +120,6 @@ buttons.forEach((button) => {
         }
 
         button.classList.add('active');
-
-
     });
 });
 
