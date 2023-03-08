@@ -11,22 +11,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
 
     <title>Rock Paper Scissors</title>
+
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <script src="script.js"></script>
+
+    <div class="title">
+        <div class="emojis">🪨 &ensp; 📄 &ensp;✂️</div>
+        <div class="title-text">Rock Paper Scissors</div>
+    </div>
 
     <div class="content">
-    <p>This game is played in the console.</p>
-    <p class="howToPlay">How to Play:</p>
-    <ol>
-        <li>Right click anywhere on the page, then click 'Inspect'</li>
-        <li>At the top of the new window that opened, click 'Console', then type 'game()' and push 'enter' twice on your keyboard</li>
-        <li>The game will prompt you to choose either rock, paper, or scissors.</li>
-        <li>Choose one, then play away!</li>
-    </ol>
-    <p>*Don't know the rules of the game? Click the button below!*</p>
-    <button><a href="https://en.wikipedia.org/wiki/Rock_paper_scissors">How to play rock, paper, scissors</a></button>
+        <div class="player">
+            Player Choice:
+            <div class="options">
+                <button class="Rock">Rock</button>
+                <button class="Paper">Paper</button>
+                <button class="Scissors">Scissors</button>
+            </div>
+        </div>
+
+        <div class="score-board">
+            <div class="player-score">Player Score: 0</div> 
+            <div class="computer-score">Computer Score: 0</div> 
+        </div>
+
+        <div class="computer">
+            Computer Choice:
+            <div class="options">
+                <button class="computerRockBtn">Rock</button>
+                <button class="computerPaperBtn">Paper</button>
+                <button class="computerScissorsBtn">Scissors</button>
+            </div>
+        </div>
     </div>
+
+    <div class="results">
+        <div class="player-emoji"></div>
+        <div class="text">VS</div>
+        <div class="computer-emoji"></div>
+    </div>
+    
 
 </body>
 </html>

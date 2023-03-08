@@ -1,73 +1,133 @@
 "use strict";
 
+let playerSelection;
+let computerSelection;
+
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice () {
     let random = Math.floor(Math.random() * 3) + 1;
 
-    if (random == 1){
-        return 'Rock';
-    } else if (random == 2){
-        return 'Paper';
-    } else {
-        return 'Scissors';
-    }
+    if (random == 1) return 'Rock';
+    if (random == 2) return 'Paper';
+    return 'Scissors';
 }
 
 function playRound (playerSelection, computerSelection) {
-    let properPlayerSelection = (playerSelection.substr(0,1)).toUpperCase() + (playerSelection.substr(1)).toLowerCase();
-    console.log("Player's Choice: " + properPlayerSelection);
-    console.log("Computer's Choice: " + computerSelection);
 
-    if (properPlayerSelection === computerSelection){
-        return "Tie!";
-    } else if (properPlayerSelection === 'Rock'){
-        if (computerSelection === 'Paper'){
-            return 'You Lose! Paper beats Rock';
-        } else {
-            return 'You Win! Rock beats Scissors';
-        }
-    } else if (properPlayerSelection === 'Paper'){
-        if (computerSelection === 'Rock'){
-            return 'You Win! Paper beats Rock';
-        } else {
-            return 'You Lose! Scissors beats Paper';
-        }
-    } else { //Player Selection = Scissors
-        if (computerSelection === 'Rock'){
-            return 'You Lose! Rock beats Scissors';
-        } else {
-            return 'You Win! Scissors beats Paper';
-        }
+    computerChoiceEmoji.classList.remove('winner');
+    playerChoiceEmoji.classList.remove('winner');
 
+    winnerText.textContent = 'VS';
+
+    if (playerSelection == computerSelection){
+        winnerText.textContent = 'Tie.';
+    } 
+    
+    if (playerSelection == 'Rock'){
+        if (computerSelection == 'Paper'){
+            computerScoreText.textContent = `Computer Score: ${++computerScore}`;
+            computerChoiceEmoji.classList.add('winner');
+            winnerText.textContent = 'Computer Wins.';
+        } else {
+            playerScoreText.textContent = `Player Score: ${++playerScore}`;
+            playerChoiceEmoji.classList.add('winner');
+            winnerText.textContent = 'You Win!';
+        }
+    }
+    
+    if (playerSelection == 'Paper'){
+        if (computerSelection == 'Rock'){
+            playerScoreText.textContent = `Player Score: ${++playerScore}`;
+            playerChoiceEmoji.classList.add('winner');
+            winnerText.textContent = 'You Win!';
+        } else {
+            computerScoreText.textContent = `Computer Score: ${++computerScore}`;
+            computerChoiceEmoji.classList.add('winner');
+            winnerText.textContent = 'Computer Wins.';
+        }
+    }
+    
+    if (playerSelection == 'Scissors') {
+        if (computerSelection == 'Rock'){
+            computerScoreText.textContent = `Computer Score: ${++computerScore}`;
+            computerChoiceEmoji.classList.add('winner');
+            winnerText.textContent = 'Computer Wins.';
+        } else {
+            playerScoreText.textContent = `Player Score: ${++playerScore}`;
+            playerChoiceEmoji.classList.add('winner');
+            winnerText.textContent = 'You Win!';
+        }
+    } 
+
+    if (playerScore == 5 || computerScore == 5){
+        gameOver();
     }
 
 }
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-
-    for (let i = 1; i < 6; i++){
-        let playerSelection = prompt("Please choose Rock, Paper or Scissors:");
-        let computerSelection = getComputerChoice();
-
-        console.log(`----------Round ${i}----------\n`)
-        let gameResult = playRound(playerSelection, computerSelection);
-        console.log(gameResult);
-
-        if (gameResult.substring(4,5) === 'W'){
-            playerScore++;
-        } else if (gameResult.substring(4,5) === 'L'){
-            computerScore++;
-        }
-
-        console.log(`Current Score: \n Player: ${playerScore} \n Computer: ${computerScore}`);
-    }
-
+function gameOver() {
     if (playerScore > computerScore){
-        return 'You won the game!';
-    } else if (playerScore === computerScore){
-        return 'Tie.'; 
-    } else {
-        return 'You lost the game.'; 
+        alert(`Congrats! You won ${playerScore}-${computerScore}!`);
     }
+    else{
+        alert(`You lost ${computerScore}-${playerScore}. Better luck next time!`);
+    }
+
+    window.location.reload(); 
 }
+
+const buttons = document.querySelectorAll('button');
+const playerChoiceEmoji = document.querySelector('.player-emoji');
+const computerChoiceEmoji = document.querySelector('.computer-emoji');
+
+    
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+
+        buttons.forEach((button) => {button.classList.remove('active')});
+        playerChoiceEmoji.classList.remove('winner');
+        computerChoiceEmoji.classList.remove('winner');
+        playerChoiceEmoji.textContent = '';
+        computerChoiceEmoji.textContent = '';
+
+
+        playerSelection = button.classList;
+        computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection);
+
+        if (playerSelection == 'Rock'){
+            playerChoiceEmoji.textContent = '🪨';
+
+        } else if (playerSelection == 'Paper'){
+            playerChoiceEmoji.textContent = '📄';
+        } else if (playerSelection == 'Scissors'){
+            playerChoiceEmoji.textContent = '✂️';
+        }
+
+        if (computerSelection == 'Rock'){
+            computerChoiceEmoji.textContent = '🪨';
+            computerRockBtn.classList.add('active');
+        } else if (computerSelection == 'Paper'){
+            computerChoiceEmoji.textContent = '📄';
+            computerPaperBtn.classList.add('active');
+        } else {
+            computerChoiceEmoji.textContent = '✂️';
+            computerScissorsBtn.classList.add('active');
+        }
+
+        button.classList.add('active');
+
+
+    });
+});
+
+const playerScoreText = document.querySelector('.player-score');
+const computerScoreText = document.querySelector('.computer-score');
+
+const winnerText = document.querySelector('.text');
+
+const computerRockBtn = document.querySelector('.computerRockBtn');
+const computerPaperBtn = document.querySelector('.computerPaperBtn');
+const computerScissorsBtn = document.querySelector('.computerScissorsBtn');

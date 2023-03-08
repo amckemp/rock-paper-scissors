@@ -1,55 +1,133 @@
 body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #365a2d;
-    font-family: 'Lora', serif;
-    font-size: 18px;
-}
-
-.content {
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 850px;
-    border-style:hidden;
+    background-color: #365a2d;
+    color: #eaeaea;
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    margin: 0;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #eaeaea;
+    padding: 4%;
+    font-weight: 600;
+    font-size: 32px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+}
+
+.player {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-style: hidden;
     border-radius: 15px;
-    padding: 0px;
+    padding: 12px;
+    margin: 0px;
+    background-color: #eaeaea;
+    color: #365a2d;
+    font-weight: 600;
+    gap: 8px;
+}
+
+.score-board {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: right;
+    border-style: hidden;
+    border-radius: 15px;
+    padding: 14px;
     margin: 0px;
     background-color: rgb(234, 234, 234);
     color: #365a2d;
     font-weight: 600;
 }
 
-.content > ol {
-    text-align: left;
-    padding-left: 45px;
+.computer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-style: hidden;
+    border-radius: 15px;
+    padding: 12px;
     margin: 0px;
-    margin-bottom: 10px;
-}
-
-a {
-    padding-bottom: 8px;
-    text-decoration: none;
+    background-color: rgb(234, 234, 234);
     color: #365a2d;
-    font-family: 'Lora', serif;
+    font-weight: 600;
+    gap: 8px;
 }
 
 button {
     border-radius: 7px;
     font-size: 18px;
-    margin-bottom: 18px;
-    padding: 8px;
+    padding: 6px 14px;
     border-style: solid;
     border-color: #365a2d;
     color: #365a2d;
+    font-family: 'Lora', serif;
 }
 
-.howToPlay {
-    font-weight: 800;
-    font-size: 24px;
-    margin-top: 18px;
-    margin-bottom: 18px;
+.active {
+    background-color: #365a2d;
+    color: #eaeaea;
+}
+
+.options {
+    display: flex;
+    gap: 16px;
+}
+
+.results {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    padding: 4%;
+    padding-bottom: 1%;
+    font-weight: 600;
+}
+
+.player-emoji, .computer-emoji {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 80px;
+    height: 80px;
+
+    border-style: solid;
+    border-width: 3px;
+    border-color: #eaeaea;
+    border-radius: 15px;
+
+    font-size: 42px;
+}
+
+.winner {
+    background-color: #eaeaea;
+}
+
+.playerWin, .computerWin {
+    font-size: 18px;
+    font-weight: 400;
+    color: #eaeaea;
+    padding: 4px;
+}
+
+.left, .right {
+    text-align: center;
 }
