@@ -1,5 +1,3 @@
-"use strict";
-
 alert("First to five wins!");
 
 let playerSelection;
@@ -26,8 +24,7 @@ function playRound (playerSelection, computerSelection) {
     if (playerSelection == computerSelection){
         winnerText.textContent = 'Tie.';
     } 
-    
-    if (playerSelection == 'Rock'){
+    else if (playerSelection == 'Rock'){
         if (computerSelection == 'Paper'){
             computerScoreText.textContent = `Computer Score: ${++computerScore}`;
             computerChoiceEmoji.classList.add('winner');
@@ -37,9 +34,7 @@ function playRound (playerSelection, computerSelection) {
             playerChoiceEmoji.classList.add('winner');
             winnerText.textContent = 'You Win!';
         }
-    }
-    
-    if (playerSelection == 'Paper'){
+    } else if (playerSelection == 'Paper'){
         if (computerSelection == 'Rock'){
             playerScoreText.textContent = `Player Score: ${++playerScore}`;
             playerChoiceEmoji.classList.add('winner');
@@ -49,9 +44,7 @@ function playRound (playerSelection, computerSelection) {
             computerChoiceEmoji.classList.add('winner');
             winnerText.textContent = 'Computer Wins.';
         }
-    }
-    
-    if (playerSelection == 'Scissors') {
+    } else if (playerSelection == 'Scissors') {
         if (computerSelection == 'Rock'){
             computerScoreText.textContent = `Computer Score: ${++computerScore}`;
             computerChoiceEmoji.classList.add('winner');
@@ -89,6 +82,7 @@ buttons.forEach((button) => {
     button.addEventListener('click', () => {
 
         buttons.forEach((button) => {button.classList.remove('active')});
+        buttons.forEach((button) => {button.classList.remove('winner')});
         playerChoiceEmoji.classList.remove('winner');
         computerChoiceEmoji.classList.remove('winner');
         playerChoiceEmoji.textContent = '';
